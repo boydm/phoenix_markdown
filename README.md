@@ -17,7 +17,7 @@
      ```elixir
     config :phoenix, :template_engines,
       haml: PhoenixHaml.Engine,
-      md: PhoenixMarkdown.Engine
+      md:   PhoenixMarkdown.Engine
      ```
 
 
