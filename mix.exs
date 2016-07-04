@@ -14,7 +14,7 @@ defmodule PhoenixMarkdown.Mixfile do
         links: %{github: "https://github.com/boydm/phoenix_markdown"}
       ],
       description: """
-      Phoenix Template Engine for Markdown
+      Phoenix Template Engine for Markdown. Uses Earmark render.
       """
     ]
   end
