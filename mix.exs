@@ -20,7 +20,7 @@ defmodule PhoenixMarkdown.Mixfile do
   end
 
   def application do
-    [applications: [:phoenix, :earmark]]
+    [applications: [:phoenix]]
   end
 
   defp deps do
