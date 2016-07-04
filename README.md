@@ -59,7 +59,7 @@ There are no generators for phoenix_markdown since they wouldn't make sense.
 
 ## Note about Elixir 1.3
 
-I'll take a dependency on Earmark 0.2.2 as soon as it ships on hex. That will clean up the numerous build warnings under Elixir 1.3
+I'll take a dependency on Earmark 0.2.2 soon after it ships on hex. That will clean up the numerous build warnings under Elixir 1.3
 
 In the mean time, if you want to get rid of those warnings now, you can override the dependency by specifying the master version of Earmark in your mix.exs file like this.
 
