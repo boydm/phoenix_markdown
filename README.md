@@ -49,4 +49,4 @@ If you are also using the [phoenix_haml](https://github.com/chrismccord/phoenix_
         ~r{web/templates/.*(eex|haml|md)$}
       ]
     ]
-```elixir
+```
