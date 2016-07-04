@@ -13,7 +13,7 @@
       md: PhoenixMarkdown.Engine
      ```
 
-    If you are also using the [phoenix_haml](https://github.com/chrismccord/phoenix_haml) engine, then it would look like this:
+    If you are also using the [phoenix_haml](https://github.com/chrismccord/phoenix_haml) engine, then it should look like this:
      ```elixir
     config :phoenix, :template_engines,
       haml: PhoenixHaml.Engine,
