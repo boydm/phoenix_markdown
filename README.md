@@ -55,7 +55,7 @@ If you are also using the [phoenix_haml](https://github.com/chrismccord/phoenix_
 
 There are no generators for phoenix_markdown since they wouldn't make sense.
 
-Markdown is intended to be written by a human in any text editor or in a fancy one like [iA Writer](https://ia.net/writer). Just create a file with the .md extension and drop it into the appropriate templates folder in your phoenix application. Then you can use it just like any other template.
+[Markdown](https://daringfireball.net/projects/markdown/) is intended to be written by a human in any simple text editor ( or a fancy one like [iA Writer](https://ia.net/writer) ). Just create a file with the .md extension and drop it into the appropriate templates folder in your phoenix application. Then you can use it just like any other template.
 
 ## Elixir 1.3 note
 
