@@ -5,7 +5,7 @@ defmodule PhoenixMarkdown.Mixfile do
     [
       app: :phoenix_markdown,
       version: "0.1.0",
-      elixir: "~> 1.3",
+      elixir: "~> 1.1",
       deps: deps,
       package: [
         contributors: ["Boyd Multerer"],
@@ -25,10 +25,9 @@ defmodule PhoenixMarkdown.Mixfile do
 
   defp deps do
     [
-      {:phoenix, "~> 1.2"},
-      {:phoenix_html, "~> 2.6"},
-      {:earmark, git: "https://github.com/pragdave/earmark.git"},
-      #{:earmark, "~> 0.2.1"},         # Markdown interpreter
+      {:phoenix, "~> 1.1"},
+      {:phoenix_html, "~> 2.3"},
+      {:earmark, "~> 0.2.1"},         # Markdown interpreter
     ]
   end
 end
