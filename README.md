@@ -1,11 +1,11 @@
 # Phoenix Template Engine for Markdown
+Current version: 0.1.0
 
 > Powered by [Earmark](https://github.com/pragdave/earmark)
 
-
 ## Usage
 
-  1. Add `{:phoenix_markdown, "~> 0.1.0"}` to your deps in `mix.exs`.
+  1. Add `{:phoenix_markdown, "~> 0.1"}` to your deps in `mix.exs`.
   2. Add the following to your Phoenix `config/config.exs`
 
      ```elixir
