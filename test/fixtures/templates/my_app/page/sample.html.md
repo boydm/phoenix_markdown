@@ -1,0 +1,1 @@
+## Sample _template_ **in** Markdown
