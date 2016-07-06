@@ -5,7 +5,7 @@ defmodule PhoenixMarkdown.Mixfile do
     [
       app: :phoenix_markdown,
       version: "0.1.1",
-      elixir: "~> 1.1",
+      elixir: "~> 1.0.1",
       deps: deps,
       package: [
         contributors: ["Boyd Multerer"],
@@ -15,7 +15,6 @@ defmodule PhoenixMarkdown.Mixfile do
       ],
       description: """
       Phoenix Template Engine for Markdown. Uses Earmark to render.
-      Updated to use Earmark 1.0.0.
       """
     ]
   end
@@ -28,7 +27,7 @@ defmodule PhoenixMarkdown.Mixfile do
     [
       {:phoenix, "~> 1.1"},
       {:phoenix_html, "~> 2.3"},
-      {:earmark, "~> 1.0.0"},         # Markdown interpreter
+      {:earmark, "~> 1.0.1"},         # Markdown interpreter
     ]
   end
 end
