@@ -5,7 +5,7 @@ defmodule PhoenixMarkdown.Mixfile do
     [
       app: :phoenix_markdown,
       version: "0.1.2",
-      elixir: "~> 1.0.1",
+      elixir: "~> 1.3.1",
       deps: deps,
       package: [
         contributors: ["Boyd Multerer"],
