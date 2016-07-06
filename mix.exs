@@ -15,6 +15,7 @@ defmodule PhoenixMarkdown.Mixfile do
       ],
       description: """
       Phoenix Template Engine for Markdown. Uses Earmark to render.
+      Updated to use Earmark 1.0.0.
       """
     ]
   end
