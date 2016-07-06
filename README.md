@@ -1,5 +1,5 @@
 # Phoenix Template Engine for Markdown
-Current version: 0.1.0
+Current version: 0.1.1
 
 > Powered by [Earmark](https://github.com/pragdave/earmark)
 
@@ -56,13 +56,3 @@ If you are also using the [phoenix_haml](https://github.com/chrismccord/phoenix_
 There are no generators for phoenix_markdown since they wouldn't make sense.
 
 [Markdown](https://daringfireball.net/projects/markdown/) is intended to be written by a human in any simple text editor ( or a fancy one like [iA Writer](https://ia.net/writer) ). Just create a file with the `.html.md` extension and drop it into the appropriate templates folder in your phoenix application. Then you can use it just like any other template.
-
-## Note about Elixir 1.3
-
-I'll take a dependency on Earmark 0.2.2 soon after it ships on hex. That will clean up the numerous build warnings under Elixir 1.3
-
-In the mean time, if you want to get rid of those warnings now, you can override the dependency by specifying the master version of Earmark in your mix.exs file like this.
-
-```elixir
-  {:earmark, git: "https://github.com/pragdave/earmark.git", override: true}
-```
