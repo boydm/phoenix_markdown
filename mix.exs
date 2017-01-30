@@ -4,9 +4,9 @@ defmodule PhoenixMarkdown.Mixfile do
   def project do
     [
       app: :phoenix_markdown,
-      version: "0.1.2",
+      version: "0.1.3",
       elixir: "~> 1.1",
-      deps: deps,
+      deps: deps(),
       package: [
         contributors: ["Boyd Multerer"],
         maintainers: ["Boyd Multerer"],
@@ -27,7 +27,7 @@ defmodule PhoenixMarkdown.Mixfile do
     [
       {:phoenix, "~> 1.1"},
       {:phoenix_html, "~> 2.3"},
-      {:earmark, "~> 1.0.1"},         # Markdown interpreter
+      {:earmark, "~> 1.1"},         # Markdown interpreter
     ]
   end
 end
