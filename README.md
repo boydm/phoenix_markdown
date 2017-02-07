@@ -53,6 +53,13 @@ If you are also using the [phoenix_haml](https://github.com/chrismccord/phoenix_
 
 ## Generators / Use
 
-There are no generators for phoenix_markdown since they wouldn't make sense.
+There are no generators for phoenix_markdown since they wouldn't make sense. If you want to include
+  markdown in a page with dynamic contact, use render and target the markdown template.
+
+  Like this:
+  ```elixir
+    <% render("some_markdown.md") %>
+  ```
+
 
 [Markdown](https://daringfireball.net/projects/markdown/) is intended to be written by a human in any simple text editor ( or a fancy one like [iA Writer](https://ia.net/writer) ). Just create a file with the `.html.md` extension and drop it into the appropriate templates folder in your phoenix application. Then you can use it just like any other template.
