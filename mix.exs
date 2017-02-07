@@ -26,6 +26,7 @@ defmodule PhoenixMarkdown.Mixfile do
   defp deps do
     [
       {:phoenix, "~> 1.1"},
+      {:ex_doc, ">= 0.0.0", only: :dev},
       {:phoenix_html, "~> 2.3"},
       {:earmark, "~> 1.1"},         # Markdown interpreter
     ]
