@@ -1,5 +1,5 @@
 # Phoenix Template Engine for Markdown
-Current version: 0.1.3
+Current version: 0.1.4
 
 > Powered by [Earmark](https://github.com/pragdave/earmark)
 
