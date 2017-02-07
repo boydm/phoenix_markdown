@@ -4,5 +4,7 @@ erl_crash.dump
 *.ez
 Guardfile
 tmp
+/doc
+/docs
 
 .DS_Store
