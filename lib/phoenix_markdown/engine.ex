@@ -14,7 +14,7 @@ defmodule PhoenixMarkdown.Engine do
     try do
       file_path
         |> File.read!
-        |> Earmark.to_html
+        |> Earmark.as_html!
     rescue
       error ->
         reraise error, System.stacktrace
