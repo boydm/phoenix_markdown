@@ -9,15 +9,17 @@ Current version: 0.1.4
   2. Add the following to your Phoenix `config/config.exs`
 
      ```elixir
-    config :phoenix, :template_engines,
-      md: PhoenixMarkdown.Engine
+     config :phoenix, :template_engines,
+       md: PhoenixMarkdown.Engine
      ```
 
-    If you are also using the [phoenix_haml](https://github.com/chrismccord/phoenix_haml) engine, then it should look like this:
+     If you are also using the [phoenix_haml](https://github.com/chrismccord/phoenix_haml) engine, then
+     it should look like this:
+
      ```elixir
-    config :phoenix, :template_engines,
-      haml: PhoenixHaml.Engine,
-      md:   PhoenixMarkdown.Engine
+     config :phoenix, :template_engines,
+       haml: PhoenixHaml.Engine,
+       md:   PhoenixMarkdown.Engine
      ```
 
 
@@ -25,7 +27,7 @@ Current version: 0.1.4
 
 ## Optional
 
-Add md extension to Phoenix live reload in `config/dev.exs`
+Add the `md` extension to Phoenix live reload in `config/dev.exs`
 
 ```elixir
   config :hello_phoenix, HelloPhoenix.Endpoint,
