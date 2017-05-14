@@ -60,7 +60,7 @@ There are no generators for phoenix_markdown since they wouldn't make sense. If 
 
   Like this:
   ```elixir
-    <% render("some_markdown.md") %>
+    <%= render("some_markdown.html") %>
   ```
 
 
