@@ -25,10 +25,10 @@ defmodule PhoenixMarkdown.Mixfile do
 
   defp deps do
     [
-      {:phoenix, "~> 1.1"},
+      {:phoenix, ">= 1.1.0"},
       {:ex_doc, ">= 0.0.0", only: :dev},
-      {:phoenix_html, "~> 2.3"},
-      {:earmark, "~> 1.1"},         # Markdown interpreter
+      {:phoenix_html, ">= 2.3.0"},
+      {:earmark, "~> 1.2"},         # Markdown interpreter
     ]
   end
 end
