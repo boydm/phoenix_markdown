@@ -1,5 +1,9 @@
 ## policy_wonk Changelist
 
+### 0.1.5
+# update to use earmark 1.2
+# relax requirement on phoenix
+
 ### 0.1.4
 # use new Earmark render syntax. Thank you to: https://github.com/nikolauska
 # add basic docs

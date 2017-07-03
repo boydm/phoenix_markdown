@@ -4,7 +4,7 @@ defmodule PhoenixMarkdown.Mixfile do
   def project do
     [
       app: :phoenix_markdown,
-      version: "0.1.4",
+      version: "0.1.5",
       elixir: "~> 1.1",
       deps: deps(),
       package: [
