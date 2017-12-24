@@ -16,7 +16,6 @@ defmodule PhoenixMarkdown.Engine do
   defp handle_smart_tags( markdown, path, name ) do
 
     restore = case Application.get_env(:phoenix_markdown, :smart_tags) do
-      true -> true
       :all -> true
       {:only, opt}     -> only?( opt, path, name )
       [{:only, opt}]   -> only?( opt, path, name )

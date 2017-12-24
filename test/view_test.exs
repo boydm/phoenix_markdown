@@ -3,13 +3,13 @@ defmodule PhoenixMarkdown.ViewTest do
   alias Phoenix.View
 
   defmodule MyApp.PageView do
-    Mix.Config.persist(phoenix_markdown: [smart_tags: false])
+    Mix.Config.persist(phoenix_markdown: [smart_tags: nil])
     use Phoenix.View, root: "test/fixtures/templates"
     use Phoenix.HTML
   end
 
   defmodule MyApp.SmartView do
-    Mix.Config.persist(phoenix_markdown: [smart_tags: true])
+    Mix.Config.persist(phoenix_markdown: [smart_tags: :all])
     use Phoenix.View, root: "test/fixtures/templates"
     use Phoenix.HTML
   end
