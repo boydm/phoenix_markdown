@@ -76,7 +76,7 @@ defmodule PhoenixMarkdown do
   The Earmark options set here apply to all .md template files. If anybody has a good idea on how to pass
   per-file options to a template complier, I'm open to suggestions.
 
-  ## Smart Tags Configuration
+  ## Optional Server Tags Configuration
 
   The second configuration block is where you indicate if you want to evaluate EEx smart tags on the server
   or escape them Earmark. The default is to escape code in Earmark.
@@ -91,10 +91,10 @@ defmodule PhoenixMarkdown do
     After the server-side content
   ```
 
-  To turn on server-side eex tags, set the `:smart_tags` configuration option.
+  To turn on server-side eex tags, set the `:server_tags` configuration option.
 
   ```elixir
-    config :phoenix_markdown, :smart_tags, :all
+    config :phoenix_markdown, :server_tags, :all
   ```
 
   The options turn on smart tags are `:all`, `:only` and `:except`. Anything else (or not setting it at all)
