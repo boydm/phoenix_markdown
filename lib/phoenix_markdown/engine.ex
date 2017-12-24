@@ -1,23 +1,26 @@
 defmodule PhoenixMarkdown.Engine do
   @behaviour Phoenix.Template.Engine
 
+  import IEx
+
   @doc """
-  Precompiles the String file_path into a function defintion, using the Earmark engine
+  Precompiles the String file_path into a function defintion, using the EEx and Earmark engines
   """
   def compile(path, _name) do
-    path
-    |> read!
-    |> EEx.compile_string(engine: Phoenix.HTML.Engine, file: path, line: 1)
-  end
-
-  defp read!(file_path) do
-    try do
-      file_path
-        |> File.read!
-        |> Earmark.as_html!
-    rescue
-      error ->
-        reraise error, System.stacktrace
+    md = File.read!(path)
+    |> Earmark.as_html!()
+    if Application.get_env(:phoenix_markdown, :smart_tags) do
+      restore_smart_tags(md)
+      |> EEx.compile_string(engine: EEx.SmartEngine, file: path, line: 1)
+    else
+      EEx.compile_string(md, engine: Phoenix.HTML.Engine, file: path, line: 1)
     end
   end
+
+  defp restore_smart_tags( markdown ) do
+    markdown
+    |> String.replace("&lt;%", "<%")
+    |> String.replace("%&gt;", "%>")
+  end
+
 end
