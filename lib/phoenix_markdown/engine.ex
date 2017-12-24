@@ -1,36 +1,65 @@
 defmodule PhoenixMarkdown.Engine do
   @behaviour Phoenix.Template.Engine
 
+  #--------------------------------------------------------
   @doc """
   Precompiles the String file_path into a function defintion, using the EEx and Earmark engines
   """
   def compile(path, name) do
     File.read!(path)
     |> Earmark.as_html!()
-    |> handle_smart_tags( name )
+    |> handle_smart_tags( path, name )
     |> EEx.compile_string( engine: Phoenix.HTML.Engine, file: path, line: 1 )
   end
 
-  defp handle_smart_tags( markdown, name ) do
+  #--------------------------------------------------------
+  defp handle_smart_tags( markdown, path, name ) do
 
-    opt = case Application.get_env(:phoenix_markdown, :smart_tags) do
+    restore = case Application.get_env(:phoenix_markdown, :smart_tags) do
       true -> true
       :all -> true
-      {:only, names}     -> Enum.member?(names, name)
-      [{:only, names}]   -> Enum.member?(names, name)
-      {:except, names}   -> !Enum.member?(names, name)
-      [{:except, names}] -> !Enum.member?(names, name)
+      {:only, opt}     -> only?( opt, path, name )
+      [{:only, opt}]   -> only?( opt, path, name )
+      {:except, opt}   -> except?( opt, path, name )
+      [{:except, opt}] -> except?( opt, path, name )
       _ -> false
     end
 
-    do_restore_smart_tags( markdown, opt )
+    do_restore_smart_tags( markdown, restore )
   end
 
+  #--------------------------------------------------------
   defp do_restore_smart_tags( markdown, true ) do
     markdown
     |> String.replace("&lt;%", "<%")
     |> String.replace("%&gt;", "%>")
   end
   defp do_restore_smart_tags( markdown, _ ), do: markdown
+
+  #--------------------------------------------------------
+  defp only?( opt, path, name ) when is_bitstring(opt) do
+    cond do
+      opt == name -> true;
+      true ->
+        paths = Path.wildcard(opt)
+        Enum.member?(paths, path)
+    end
+  end
+  defp only?( opts, path, name ) when is_list(opts) do
+    Enum.any?(opts, &only?(&1, path, name) )
+  end
+
+  #--------------------------------------------------------
+  defp except?( opt, path, name ) when is_bitstring(opt) do
+    cond do
+      opt == name -> false;
+      true ->
+        paths = Path.wildcard(opt)
+        !Enum.member?(paths, path)
+    end
+  end
+  defp except?( opts, path, name ) when is_list(opts) do
+    Enum.all?(opts, &except?(&1, path, name) )
+  end
 
 end
