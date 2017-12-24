@@ -124,7 +124,7 @@ defmodule PhoenixMarkdown do
 
   Like this:
   ```elixir
-    <% render("some_markdown.md") %>
+    <% render("some_markdown.html") %>
   ```
 
   [Markdown](https://daringfireball.net/projects/markdown/) is intended to be written by a human
