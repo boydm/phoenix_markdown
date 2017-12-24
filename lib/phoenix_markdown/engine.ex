@@ -7,7 +7,7 @@ defmodule PhoenixMarkdown.Engine do
   """
   def compile(path, name) do
     File.read!(path)
-    |> Earmark.as_html!()
+    |> Earmark.as_html!(Application.get_env(:phoenix_markdown, :earmark) || %Earmark.Options{})
     |> handle_smart_tags( path, name )
     |> EEx.compile_string( engine: Phoenix.HTML.Engine, file: path, line: 1 )
   end

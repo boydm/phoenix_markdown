@@ -17,7 +17,7 @@ defmodule PhoenixMarkdown.ViewTest do
   #--------------------------------------------------------
   test "render a markdown template with smart tags off" do
     html = View.render(MyApp.PageView, "sample.html", [])
-    assert html == {:safe, ["" | "<h2>Sample <em>template</em> <strong>in</strong> Markdown</h2>\n"]}
+    assert html == {:safe, ["" | "<h2>Sample <em>template</em> <strong>in</strong> Markdown</h2>\n<p>This\nbreaks</p>\n"]}
   end
 
   test "render a smart markdown template with smart tags off" do

@@ -6,26 +6,39 @@ defmodule PhoenixMarkdown.EngineTest do
   # vanilla markdown
 
   test "compile a vanilla markdown template with smart tags turned off" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
     Mix.Config.persist(phoenix_markdown: [smart_tags: false])
     data = "test/fixtures/templates/view_test/my_app/page/sample.html.md"
     |> Engine.compile("sample.html")
-    assert data == {
-      :safe,
-      [{:|, [], ["", "<h2>Sample <em>template</em> <strong>in</strong> Markdown</h2>\n"]}]
-    }
+    assert data == {:safe, [{:|, [], ["", "<h2>Sample <em>template</em> <strong>in</strong> Markdown</h2>\n<p>This\nbreaks</p>\n"]}]}
   end
 
   test "compile a vanilla markdown template with smart_tags turned on" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
     Mix.Config.persist(phoenix_markdown: [smart_tags: true])
     data = "test/fixtures/templates/view_test/my_app/page/sample.html.md"
     |> Engine.compile("sample.html")
-    assert data == {:safe, [{:|, [], ["", "<h2>Sample <em>template</em> <strong>in</strong> Markdown</h2>\n"]}]}
+    assert data == {:safe, [{:|, [], ["", "<h2>Sample <em>template</em> <strong>in</strong> Markdown</h2>\n<p>This\nbreaks</p>\n"]}]}
   end
+
+  #============================================================================
+  # earmark options
+
+    test "compile a vanilla markdown template with earmark options" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{gfm: true, breaks: true}])
+    Mix.Config.persist(phoenix_markdown: [smart_tags: false])
+    data = "test/fixtures/templates/view_test/my_app/page/sample.html.md"
+    |> Engine.compile("sample.html")
+    assert data == {:safe, [{:|, [], ["", "<h2>Sample <em>template</em> <strong>in</strong> Markdown</h2>\n<p>This<br/>breaks</p>\n"]}]}
+  end
+
+
 
   #============================================================================
   # basic smart tags
 
   test "compile a smart template with smart tags turned off" do
+    Mix.Config.persist(phoenix_markdown: [earmark: nil])
     Mix.Config.persist(phoenix_markdown: [smart_tags: false])
     data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
@@ -40,6 +53,7 @@ defmodule PhoenixMarkdown.EngineTest do
   end
 
   test "compile a smart template with smart tags turned on with true" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
     Mix.Config.persist(phoenix_markdown: [smart_tags: true])
     data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
@@ -47,6 +61,7 @@ defmodule PhoenixMarkdown.EngineTest do
   end
 
   test "compile a smart template with smart tags turned on with :all" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
     Mix.Config.persist(phoenix_markdown: [smart_tags: :all])
     data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
@@ -57,6 +72,7 @@ defmodule PhoenixMarkdown.EngineTest do
   # smart tags via :only tag
 
   test "compile a smart template with smart tags turned on with :only agains the file name" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
     Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, "smart_sample.html"}])
     data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
@@ -74,6 +90,7 @@ defmodule PhoenixMarkdown.EngineTest do
   end
 
   test "compile a smart template with smart tags turned on with :only - full path match" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
     Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, ["test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"]}])
     data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
@@ -86,6 +103,7 @@ defmodule PhoenixMarkdown.EngineTest do
   end
 
   test "compile a smart template with smart tags turned on with :only - wildcard path match" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
     Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, ["test/fixtures/templates/view_test/**/page/smart_*.html.md"]}])
     data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
@@ -98,6 +116,7 @@ defmodule PhoenixMarkdown.EngineTest do
   end
 
   test "compile a smart template with smart tags turned on with :only - regex path match" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
     Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, [~r/.+my_app.+/]}])
     data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
@@ -122,6 +141,7 @@ defmodule PhoenixMarkdown.EngineTest do
   # smart tags via :except tag
 
   test "compile a smart template with smart tags turned on with :except against the name" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
     Mix.Config.persist(phoenix_markdown: [smart_tags: {:except, ["smart_sample.html"]}])
     data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
@@ -139,6 +159,7 @@ defmodule PhoenixMarkdown.EngineTest do
   end
 
   test "compile a smart template with smart tags turned on with :except - full path match" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
     Mix.Config.persist(phoenix_markdown: [smart_tags: {:except, ["test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"]}])
     data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
@@ -151,6 +172,7 @@ defmodule PhoenixMarkdown.EngineTest do
   end
 
   test "compile a smart template with smart tags turned on with :except - wildcard path match" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
     Mix.Config.persist(phoenix_markdown: [smart_tags: {:except, ["test/fixtures/templates/view_test/**/page/smart_*.html.md"]}])
     data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
@@ -163,6 +185,7 @@ defmodule PhoenixMarkdown.EngineTest do
   end
 
   test "compile a smart template with smart tags turned on with :except - regex path match" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
     Mix.Config.persist(phoenix_markdown: [smart_tags: {:except, [~r/.+my_app.+/]}])
     data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
@@ -175,6 +198,7 @@ defmodule PhoenixMarkdown.EngineTest do
   end
 
   test "compile a smart template with smart tags turned on with :except - bad value should crash" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
     Mix.Config.persist(phoenix_markdown: [smart_tags: {:except, [:bad_value]}])
     assert_raise ArgumentError, fn ->
       Engine.compile("test/fixtures/templates/view_test/my_app/page/smart_sample.html.md", "smart_sample.html")
