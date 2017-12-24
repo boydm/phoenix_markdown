@@ -114,6 +114,7 @@ defmodule PhoenixMarkdown do
       * a path with wildcards ex: `"**/page/**"`. This is nice as it would prevent evaluation of all files in a single directory.
       * a regex agains the path. ex: `~r/.+%%.+/`. This allows you to use a character sequence in the name as a per-file (or path) flag saying if it not should be evaluated.
 
+  Both the `:only` and `:except` accept either a single pattern, or a list of patterns.
 
   ## Generators
 
