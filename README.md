@@ -56,7 +56,7 @@ then the pattern should look like this:
 You can configure phoenix_markdown vie two seperate configuration blocks.
 
 The first one is,
-literally, the options that will be passed in to Earmark as it renders the markdown into html.
+literally, the options that will be passed to Earmark as it renders the markdown into html.
 
 ```elixir
   config :phoenix_markdown, :earmark, %Earmark.Options{
