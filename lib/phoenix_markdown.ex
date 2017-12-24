@@ -101,12 +101,14 @@ defmodule PhoenixMarkdown do
   leaves the tags excaped in Markdown.
 
   * `:all` evaluates all smart tags in all markdown files.
-  * `:only` Only files that match the pattern or patterns will be evaluated. This pattern can be any of:
+  * `:only` Only files that match the pattern or patterns will be evaluated.
+    This pattern can be any of:
       * The name of the final html file ex: `"sample.html"`
       * The full path of the template file ex: `"lib/sample_web/templates/page/sample.html.md"`
       * a path with wildcards ex: `"**/page/**"`. This is nice as it would evaluate all files in a single directory.
       * a regex agains the path. ex: `~r/.+%%.+/`. This allows you to use a character sequence in the name as a per-file (or path) flag saying if it should be evaluated.
-  * `:except` Only files that do NOT match the pattern or patterns will be evaluated. This pattern can be any of:
+  * `:except` Only files that do NOT match the pattern or patterns will be evaluated.
+    This pattern can be any of:
       * The name of the final html file ex: `"sample.html"`
       * The full path of the template file ex: `"lib/sample_web/templates/page/sample.html.md"`
       * a path with wildcards ex: `"**/page/**"`. This is nice as it would prevent evaluation of all files in a single directory.
