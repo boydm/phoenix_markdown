@@ -48,6 +48,14 @@ defmodule PhoenixMarkdown.Engine do
   defp only?( opts, path, name ) when is_list(opts) do
     Enum.any?(opts, &only?(&1, path, name) )
   end
+  # sadly there is no is_regex guard...
+  defp only?(regex, path, _) do
+    if Regex.regex?(regex) do
+      String.match?(path, regex)
+    else
+      raise ArgumentError, "Invalid parameter to PhoenixMarkdown only: configuration #{inspect(regex)}"
+    end
+  end
 
   #--------------------------------------------------------
   defp except?( opt, path, name ) when is_bitstring(opt) do
@@ -60,6 +68,14 @@ defmodule PhoenixMarkdown.Engine do
   end
   defp except?( opts, path, name ) when is_list(opts) do
     Enum.all?(opts, &except?(&1, path, name) )
+  end
+  # sadly there is no is_regex guard...
+  defp except?(regex, path, _) do
+    if Regex.regex?(regex) do
+      !String.match?(path, regex)
+    else
+      raise ArgumentError, "Invalid parameter to PhoenixMarkdown except: configuration #{inspect(regex)}"
+    end
   end
 
 end
