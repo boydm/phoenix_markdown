@@ -5,21 +5,21 @@ defmodule PhoenixMarkdown.Engine do
   Precompiles the String file_path into a function defintion, using the EEx and Earmark engines
   """
   def compile(path, _name) do
-    md = File.read!(path)
+    File.read!(path)
     |> Earmark.as_html!()
-    
-    if Application.get_env(:phoenix_markdown, :smart_tags) do
-      restore_smart_tags(md)
-      |> EEx.compile_string(engine: EEx.SmartEngine, file: path, line: 1)
-    else
-      EEx.compile_string(md, engine: Phoenix.HTML.Engine, file: path, line: 1)
-    end
+    |> handle_smart_tags()
+    |> EEx.compile_string( engine: Phoenix.HTML.Engine, file: path, line: 1 )
   end
 
-  defp restore_smart_tags( markdown ) do
+  defp handle_smart_tags( markdown ) do
+    do_restore_smart_tags( markdown, Application.get_env(:phoenix_markdown, :smart_tags) )
+  end
+
+  defp do_restore_smart_tags( markdown, true ) do
     markdown
     |> String.replace("&lt;%", "<%")
     |> String.replace("%&gt;", "%>")
   end
+  defp do_restore_smart_tags( markdown, _ ), do: markdown
 
 end
