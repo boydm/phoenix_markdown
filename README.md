@@ -1,30 +1,28 @@
 # Markdown Template Engine for Phoenix
 
-  A Markdown template engine for Phoenix. It uses [Earmark](https://hex.pm/packages/earmark) to render
-  markdown to html. It also lets you (optionally) embed EEx tags to be evaulated on the server.
+  A Markdown template engine for Phoenix. It also lets you (optionally) embed EEx tags to be evaulated on the server.
 
 > Powered by [Earmark](https://github.com/pragdave/earmark)
 
   ## Usage
 
-    1. Add `{:phoenix_markdown, "~> 1.0"}` to your deps in `mix.exs`.
-    2. Add the following to your Phoenix `config/config.exs`
+  1. Add `{:phoenix_markdown, "~> 1.0"}` to your deps in `mix.exs`.
+  2. Add the following to your Phoenix `config/config.exs`
 
-       ```elixir
-      config :phoenix, :template_engines,
-        md: PhoenixMarkdown.Engine
-       ```
+     ```elixir
+    config :phoenix, :template_engines,
+      md: PhoenixMarkdown.Engine
+     ```
 
-      If you are also using the [phoenix_haml](https://github.com/chrismccord/phoenix_haml) engine,
-      then it should look like this:
-       ```elixir
-      config :phoenix, :template_engines,
-        haml: PhoenixHaml.Engine,
-        md:   PhoenixMarkdown.Engine
-       ```
+    If you are also using the [phoenix_haml](https://github.com/chrismccord/phoenix_haml) engine,
+    then it should look like this:
+     ```elixir
+    config :phoenix, :template_engines,
+      haml: PhoenixHaml.Engine,
+      md:   PhoenixMarkdown.Engine
+     ```
 
-
-    3. Use the `.html.md` extensions for your templates.
+  3. Use the `.html.md` extensions for your templates.
 
   ## Optional
 
