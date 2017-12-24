@@ -65,43 +65,44 @@ defmodule PhoenixMarkdown.EngineTest do
 
   test "compile a smart template with smart tags turned on with :only agains the file name" do
     Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
-    Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, "smart_sample.html"}])
-    data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
-    |> Engine.compile("smart_sample.html")
-    assert data == {:safe, [{:|, [], [{:__block__, [], [{:=, [], [{:tmp1, [], Phoenix.HTML.Engine}, [{:|, [], [{:__block__, [], [{:=, [], [{:tmp2, [], Phoenix.HTML.Engine}, [{:|, [], ["", "<h2>Smart</h2>\n<p>"]}]]}, {:+, [line: 2], [11, 1]}, {:tmp2, [], Phoenix.HTML.Engine}]}, "\n"]}]]}, [{:|, [], [{:tmp1, [], Phoenix.HTML.Engine}, {:case, [generated: true], [{:+, [line: 3], [11, 2]}, [do: [{:->, [generated: true], [[safe: {:data, [generated: true], Phoenix.HTML.Engine}], {:data, [generated: true], Phoenix.HTML.Engine}]}, {:->, [generated: true], [[{:when, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}, {:is_binary, [generated: true, context: Phoenix.HTML.Engine, import: Kernel], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}], {{:., [generated: true], [{:__aliases__, [generated: true, alias: false], [:Plug, :HTML]}, :html_escape]}, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}, {:->, [generated: true], [[{:other, [generated: true], Phoenix.HTML.Engine}], {{:., [line: 3], [{:__aliases__, [line: 3, alias: false], [:Phoenix, :HTML, :Safe]}, :to_iodata]}, [line: 3], [{:other, [line: 3], Phoenix.HTML.Engine}]}]}]]]}]}]]}, "\n<% 11 + 3 %>\n\nfin</p>\n"]}]}
 
     Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, ["smart_sample.html"]}])
     data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
     assert data == {:safe, [{:|, [], [{:__block__, [], [{:=, [], [{:tmp1, [], Phoenix.HTML.Engine}, [{:|, [], [{:__block__, [], [{:=, [], [{:tmp2, [], Phoenix.HTML.Engine}, [{:|, [], ["", "<h2>Smart</h2>\n<p>"]}]]}, {:+, [line: 2], [11, 1]}, {:tmp2, [], Phoenix.HTML.Engine}]}, "\n"]}]]}, [{:|, [], [{:tmp1, [], Phoenix.HTML.Engine}, {:case, [generated: true], [{:+, [line: 3], [11, 2]}, [do: [{:->, [generated: true], [[safe: {:data, [generated: true], Phoenix.HTML.Engine}], {:data, [generated: true], Phoenix.HTML.Engine}]}, {:->, [generated: true], [[{:when, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}, {:is_binary, [generated: true, context: Phoenix.HTML.Engine, import: Kernel], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}], {{:., [generated: true], [{:__aliases__, [generated: true, alias: false], [:Plug, :HTML]}, :html_escape]}, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}, {:->, [generated: true], [[{:other, [generated: true], Phoenix.HTML.Engine}], {{:., [line: 3], [{:__aliases__, [line: 3, alias: false], [:Phoenix, :HTML, :Safe]}, :to_iodata]}, [line: 3], [{:other, [line: 3], Phoenix.HTML.Engine}]}]}]]]}]}]]}, "\n<% 11 + 3 %>\n\nfin</p>\n"]}]}
 
-    Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, ["other.html"]}])
-    data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
+    Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, "smart_sample.html"}])
+    data = "test/fixtures/templates/view_test/my_app/smart/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
-    assert data == {:safe, [{:|, [], ["", "<h2>Smart</h2>\n<p>&lt;% 11 + 1 %&gt;\n&lt;%= 11 + 2 %&gt;\n&lt;%% 11 + 3 %&gt;\n&lt;%# 11 + 4 %&gt;\nfin</p>\n"]}]}
+    assert data == {:safe, [{:|, [], [{:__block__, [], [{:=, [], [{:tmp1, [], Phoenix.HTML.Engine}, [{:|, [], ["", "<h2>Smart</h2>\n<p>"]}]]}, [{:|, [], [{:tmp1, [], Phoenix.HTML.Engine}, {:case, [generated: true], [{:+, [line: 2], [11, 2]}, [do: [{:->, [generated: true], [[safe: {:data, [generated: true], Phoenix.HTML.Engine}], {:data, [generated: true], Phoenix.HTML.Engine}]}, {:->, [generated: true], [[{:when, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}, {:is_binary, [generated: true, context: Phoenix.HTML.Engine, import: Kernel], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}], {{:., [generated: true], [{:__aliases__, [generated: true, alias: false], [:Plug, :HTML]}, :html_escape]}, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}, {:->, [generated: true], [[{:other, [generated: true], Phoenix.HTML.Engine}], {{:., [line: 2], [{:__aliases__, [line: 2, alias: false], [:Phoenix, :HTML, :Safe]}, :to_iodata]}, [line: 2], [{:other, [line: 2], Phoenix.HTML.Engine}]}]}]]]}]}]]}, "\nfin</p>\n"]}]}
+
+
+    Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, ["other.html"]}])
+    data = "test/fixtures/templates/view_test/my_app/smart/smart_sample.html.md"
+    |> Engine.compile("smart_sample.html")
+    assert data == {:safe, [{:|, [], ["", "<h2>Smart</h2>\n<p>&lt;%= 11 + 2 %&gt;\nfin</p>\n"]}]}
   end
 
   test "compile a smart template with smart tags turned on with :only - full path match" do
     Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
-    Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, ["test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"]}])
-    data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
+    Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, ["test/fixtures/templates/view_test/my_app/smart/smart_sample.html.md"]}])
+    data = "test/fixtures/templates/view_test/my_app/smart/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
-    assert data == {:safe, [{:|, [], [{:__block__, [], [{:=, [], [{:tmp1, [], Phoenix.HTML.Engine}, [{:|, [], [{:__block__, [], [{:=, [], [{:tmp2, [], Phoenix.HTML.Engine}, [{:|, [], ["", "<h2>Smart</h2>\n<p>"]}]]}, {:+, [line: 2], [11, 1]}, {:tmp2, [], Phoenix.HTML.Engine}]}, "\n"]}]]}, [{:|, [], [{:tmp1, [], Phoenix.HTML.Engine}, {:case, [generated: true], [{:+, [line: 3], [11, 2]}, [do: [{:->, [generated: true], [[safe: {:data, [generated: true], Phoenix.HTML.Engine}], {:data, [generated: true], Phoenix.HTML.Engine}]}, {:->, [generated: true], [[{:when, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}, {:is_binary, [generated: true, context: Phoenix.HTML.Engine, import: Kernel], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}], {{:., [generated: true], [{:__aliases__, [generated: true, alias: false], [:Plug, :HTML]}, :html_escape]}, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}, {:->, [generated: true], [[{:other, [generated: true], Phoenix.HTML.Engine}], {{:., [line: 3], [{:__aliases__, [line: 3, alias: false], [:Phoenix, :HTML, :Safe]}, :to_iodata]}, [line: 3], [{:other, [line: 3], Phoenix.HTML.Engine}]}]}]]]}]}]]}, "\n<% 11 + 3 %>\n\nfin</p>\n"]}]}
+    assert data == {:safe, [{:|, [], [{:__block__, [], [{:=, [], [{:tmp1, [], Phoenix.HTML.Engine}, [{:|, [], ["", "<h2>Smart</h2>\n<p>"]}]]}, [{:|, [], [{:tmp1, [], Phoenix.HTML.Engine}, {:case, [generated: true], [{:+, [line: 2], [11, 2]}, [do: [{:->, [generated: true], [[safe: {:data, [generated: true], Phoenix.HTML.Engine}], {:data, [generated: true], Phoenix.HTML.Engine}]}, {:->, [generated: true], [[{:when, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}, {:is_binary, [generated: true, context: Phoenix.HTML.Engine, import: Kernel], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}], {{:., [generated: true], [{:__aliases__, [generated: true, alias: false], [:Plug, :HTML]}, :html_escape]}, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}, {:->, [generated: true], [[{:other, [generated: true], Phoenix.HTML.Engine}], {{:., [line: 2], [{:__aliases__, [line: 2, alias: false], [:Phoenix, :HTML, :Safe]}, :to_iodata]}, [line: 2], [{:other, [line: 2], Phoenix.HTML.Engine}]}]}]]]}]}]]}, "\nfin</p>\n"]}]}
 
-    Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, ["test/fixtures/templates/view_test/my_app/page/other.html.md"]}])
-    data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
+    Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, ["test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"]}])
+    data = "test/fixtures/templates/view_test/my_app/smart/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
-    assert data == {:safe, [{:|, [], ["", "<h2>Smart</h2>\n<p>&lt;% 11 + 1 %&gt;\n&lt;%= 11 + 2 %&gt;\n&lt;%% 11 + 3 %&gt;\n&lt;%# 11 + 4 %&gt;\nfin</p>\n"]}]}
+    assert data == {:safe, [{:|, [], ["", "<h2>Smart</h2>\n<p>&lt;%= 11 + 2 %&gt;\nfin</p>\n"]}]}
   end
 
   test "compile a smart template with smart tags turned on with :only - wildcard path match" do
     Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
-    Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, ["test/fixtures/templates/view_test/**/page/smart_*.html.md"]}])
-    data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
+    Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, ["test/fixtures/templates/view_test/**/smart/smart_*.html.md"]}])
+    data = "test/fixtures/templates/view_test/my_app/smart/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
-    assert data == {:safe, [{:|, [], [{:__block__, [], [{:=, [], [{:tmp1, [], Phoenix.HTML.Engine}, [{:|, [], [{:__block__, [], [{:=, [], [{:tmp2, [], Phoenix.HTML.Engine}, [{:|, [], ["", "<h2>Smart</h2>\n<p>"]}]]}, {:+, [line: 2], [11, 1]}, {:tmp2, [], Phoenix.HTML.Engine}]}, "\n"]}]]}, [{:|, [], [{:tmp1, [], Phoenix.HTML.Engine}, {:case, [generated: true], [{:+, [line: 3], [11, 2]}, [do: [{:->, [generated: true], [[safe: {:data, [generated: true], Phoenix.HTML.Engine}], {:data, [generated: true], Phoenix.HTML.Engine}]}, {:->, [generated: true], [[{:when, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}, {:is_binary, [generated: true, context: Phoenix.HTML.Engine, import: Kernel], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}], {{:., [generated: true], [{:__aliases__, [generated: true, alias: false], [:Plug, :HTML]}, :html_escape]}, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}, {:->, [generated: true], [[{:other, [generated: true], Phoenix.HTML.Engine}], {{:., [line: 3], [{:__aliases__, [line: 3, alias: false], [:Phoenix, :HTML, :Safe]}, :to_iodata]}, [line: 3], [{:other, [line: 3], Phoenix.HTML.Engine}]}]}]]]}]}]]}, "\n<% 11 + 3 %>\n\nfin</p>\n"]}]}
+    assert data == {:safe, [{:|, [], [{:__block__, [], [{:=, [], [{:tmp1, [], Phoenix.HTML.Engine}, [{:|, [], ["", "<h2>Smart</h2>\n<p>"]}]]}, [{:|, [], [{:tmp1, [], Phoenix.HTML.Engine}, {:case, [generated: true], [{:+, [line: 2], [11, 2]}, [do: [{:->, [generated: true], [[safe: {:data, [generated: true], Phoenix.HTML.Engine}], {:data, [generated: true], Phoenix.HTML.Engine}]}, {:->, [generated: true], [[{:when, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}, {:is_binary, [generated: true, context: Phoenix.HTML.Engine, import: Kernel], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}], {{:., [generated: true], [{:__aliases__, [generated: true, alias: false], [:Plug, :HTML]}, :html_escape]}, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}, {:->, [generated: true], [[{:other, [generated: true], Phoenix.HTML.Engine}], {{:., [line: 2], [{:__aliases__, [line: 2, alias: false], [:Phoenix, :HTML, :Safe]}, :to_iodata]}, [line: 2], [{:other, [line: 2], Phoenix.HTML.Engine}]}]}]]]}]}]]}, "\nfin</p>\n"]}]}
 
-    Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, ["test/fixtures/templates/view_test/my_app/page/other.html.md"]}])
     data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
     assert data == {:safe, [{:|, [], ["", "<h2>Smart</h2>\n<p>&lt;% 11 + 1 %&gt;\n&lt;%= 11 + 2 %&gt;\n&lt;%% 11 + 3 %&gt;\n&lt;%# 11 + 4 %&gt;\nfin</p>\n"]}]}
@@ -109,15 +110,14 @@ defmodule PhoenixMarkdown.EngineTest do
 
   test "compile a smart template with smart tags turned on with :only - regex path match" do
     Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
-    Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, [~r/.+my_app.+/]}])
-    data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
+    Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, [~r/.+%%.+/]}])
+    data = "test/fixtures/templates/view_test/my_app/smart/smart_sample_%%.html.md"
     |> Engine.compile("smart_sample.html")
-    assert data == {:safe, [{:|, [], [{:__block__, [], [{:=, [], [{:tmp1, [], Phoenix.HTML.Engine}, [{:|, [], [{:__block__, [], [{:=, [], [{:tmp2, [], Phoenix.HTML.Engine}, [{:|, [], ["", "<h2>Smart</h2>\n<p>"]}]]}, {:+, [line: 2], [11, 1]}, {:tmp2, [], Phoenix.HTML.Engine}]}, "\n"]}]]}, [{:|, [], [{:tmp1, [], Phoenix.HTML.Engine}, {:case, [generated: true], [{:+, [line: 3], [11, 2]}, [do: [{:->, [generated: true], [[safe: {:data, [generated: true], Phoenix.HTML.Engine}], {:data, [generated: true], Phoenix.HTML.Engine}]}, {:->, [generated: true], [[{:when, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}, {:is_binary, [generated: true, context: Phoenix.HTML.Engine, import: Kernel], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}], {{:., [generated: true], [{:__aliases__, [generated: true, alias: false], [:Plug, :HTML]}, :html_escape]}, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}, {:->, [generated: true], [[{:other, [generated: true], Phoenix.HTML.Engine}], {{:., [line: 3], [{:__aliases__, [line: 3, alias: false], [:Phoenix, :HTML, :Safe]}, :to_iodata]}, [line: 3], [{:other, [line: 3], Phoenix.HTML.Engine}]}]}]]]}]}]]}, "\n<% 11 + 3 %>\n\nfin</p>\n"]}]}
+    assert data == {:safe, [{:|, [], [{:__block__, [], [{:=, [], [{:tmp1, [], Phoenix.HTML.Engine}, [{:|, [], ["", "<h2>Name Tagged</h2>\n<p>"]}]]}, [{:|, [], [{:tmp1, [], Phoenix.HTML.Engine}, {:case, [generated: true], [{:+, [line: 2], [11, 2]}, [do: [{:->, [generated: true], [[safe: {:data, [generated: true], Phoenix.HTML.Engine}], {:data, [generated: true], Phoenix.HTML.Engine}]}, {:->, [generated: true], [[{:when, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}, {:is_binary, [generated: true, context: Phoenix.HTML.Engine, import: Kernel], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}], {{:., [generated: true], [{:__aliases__, [generated: true, alias: false], [:Plug, :HTML]}, :html_escape]}, [generated: true], [{:bin, [generated: true], Phoenix.HTML.Engine}]}]}, {:->, [generated: true], [[{:other, [generated: true], Phoenix.HTML.Engine}], {{:., [line: 2], [{:__aliases__, [line: 2, alias: false], [:Phoenix, :HTML, :Safe]}, :to_iodata]}, [line: 2], [{:other, [line: 2], Phoenix.HTML.Engine}]}]}]]]}]}]]}, "\nfin</p>\n"]}]}
 
-    Mix.Config.persist(phoenix_markdown: [smart_tags: {:only, [~r/.+other_app.+/]}])
-    data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
+    data = "test/fixtures/templates/view_test/my_app/smart/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
-    assert data == {:safe, [{:|, [], ["", "<h2>Smart</h2>\n<p>&lt;% 11 + 1 %&gt;\n&lt;%= 11 + 2 %&gt;\n&lt;%% 11 + 3 %&gt;\n&lt;%# 11 + 4 %&gt;\nfin</p>\n"]}]}
+    assert data == {:safe, [{:|, [], ["", "<h2>Smart</h2>\n<p>&lt;%= 11 + 2 %&gt;\nfin</p>\n"]}]}
   end
 
   test "compile a smart template with smart tags turned on with :only - bad value should crash" do
