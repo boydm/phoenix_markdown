@@ -63,7 +63,7 @@ defmodule PhoenixMarkdown do
   The first one is,
   literally, the options that will be passed in to Earmark as it renders the markdown into html.
 
-    ```elixir
+  ```elixir
     config :phoenix_markdown, :earmark, %Earmark.Options{
       gfm: true,
       breaks: true
@@ -72,8 +72,20 @@ defmodule PhoenixMarkdown do
 
   ## Smart Tags Configuration
 
-  The second configuration block is where you indicate if you want
-  
+  The second configuration block is where you indicate if you want to evaluate EEx smart tags on the server
+  or escape them Earmark. The default is to escape code in Earmark.
+
+  ```elixir
+    config :phoenix_markdown, :smart_tags, :all
+
+    config :phoenix_markdown, :smart_tags, only: "smart_sample.html"
+    config :phoenix_markdown, :smart_tags, only: ["**/smart_templates/*.md"]
+    config :phoenix_markdown, :smart_tags, only: ~r/.+%%.+/
+
+    config :phoenix_markdown, :smart_tags, :all
+
+  ```
+
 
   ## Generators
 

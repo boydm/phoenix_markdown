@@ -2,6 +2,7 @@
 
 ### 1.0.0-rc
 # Add optional eex pre-compile step to intepret smart-tags in a markdown document
+# Add configuration bock to pass options into Earmark
 # improve tests and docs
 
 ### 0.1.5

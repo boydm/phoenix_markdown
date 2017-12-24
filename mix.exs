@@ -3,6 +3,7 @@ defmodule PhoenixMarkdown.Mixfile do
 
   @version "1.0.0-rc"
   @github "https://github.com/boydm/phoenix_markdown"
+#  @tutorial "https://medium.com/@boydm/policy-wonk-the-tutorial-6d2b6e435c46#.dz7utkmgb"
 
   def project do
     [
