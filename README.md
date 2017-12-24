@@ -51,7 +51,7 @@ then the pattern should look like this:
     ]
 ```
 
-## Earmark Configuration
+## Optional Earmark Configuration
 
 You can configure phoenix_markdown vie two seperate configuration blocks.
 
@@ -67,6 +67,9 @@ literally, the options that will be passed in to Earmark as it renders the markd
 
 Please read the [Earmark Documentation](https://hexdocs.pm/earmark/Earmark.html#as_html!/2) to understand
 the options that can go here.
+
+The Earmark options set here apply to all .md template files. If anybody has a good idea on how to pass
+per-file options in to a template complier, I'm open to suggestions.
 
 ## Smart Tags Configuration
 
