@@ -74,7 +74,7 @@ defmodule PhoenixMarkdown do
   the options that can go here.
 
   The Earmark options set here apply to all .md template files. If anybody has a good idea on how to pass
-  per-file options in to a template complier, I'm open to suggestions.
+  per-file options to a template complier, I'm open to suggestions.
 
   ## Smart Tags Configuration
 
