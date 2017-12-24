@@ -4,7 +4,10 @@ defmodule PhoenixMarkdown.Engine do
   @doc """
   Precompiles the String file_path into a function defintion, using the EEx and Earmark engines
   """
-  def compile(path, _name) do
+  def compile(path, name) do
+
+    IO.puts("md_engine path: #{path}, name: #{name}")
+
     File.read!(path)
     |> Earmark.as_html!()
     |> handle_smart_tags()
