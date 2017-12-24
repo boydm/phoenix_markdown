@@ -79,7 +79,7 @@ defmodule PhoenixMarkdown do
   ## Optional Server Tags Configuration
 
   The second configuration block is where you indicate if you want to evaluate EEx tags on the server
-  or escape them Earmark. The default is to escape code in Earmark.
+  or escape them Earmark. The default is to escape in Earmark.
 
   Example of markdown content with a server-side tag:
 
