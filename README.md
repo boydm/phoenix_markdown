@@ -73,10 +73,10 @@ per-file options to a template complier, I'm open to suggestions.
 
 ## Optional Server Tags Configuration
 
-The second configuration block is where you indicate if you want to evaluate EEx smart tags on the server
+The second configuration block is where you indicate if you want to evaluate EEx tags on the server
 or escape them Earmark. The default is to escape code in Earmark.
 
-Example of markdown content with a smart tag:
+Example of markdown content with a server-side tag:
 
 ```markdown
   ## Before server-side content
@@ -92,10 +92,10 @@ To turn on server-side eex tags, set the `:server_tags` configuration option.
   config :phoenix_markdown, :server_tags, :all
 ```
 
-The options turn on smart tags are `:all`, `:only` and `:except`. Anything else (or not setting it at all)
+The options turn on server tags are `:all`, `:only` and `:except`. Anything else (or not setting it at all)
 leaves the tags excaped in Markdown.
 
-* `:all` evaluates all smart tags in all markdown files.
+* `:all` evaluates all server tags in all markdown files.
 * `:only` Only files that match the pattern or patterns will be evaluated. 
   This pattern can be any of:
     * The name of the final html file ex: `"sample.html"`
