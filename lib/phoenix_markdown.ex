@@ -70,28 +70,51 @@ defmodule PhoenixMarkdown do
     }
   ```
 
+  Please read the [Earmark Documentation](https://hexdocs.pm/earmark/Earmark.html#as_html!/2) to understand
+  the options that can go here.
+
   ## Smart Tags Configuration
 
   The second configuration block is where you indicate if you want to evaluate EEx smart tags on the server
   or escape them Earmark. The default is to escape code in Earmark.
 
+  Example of a markdown content with a smart tag:
+
+  ```markdown
+    ## Before server-side content
+
+    <%= 11 + 2 %>
+
+    After the server-side content
+  ```
+
+  To turn on server-side eex tags, set the `:smart_tags` configuration option.
+
   ```elixir
     config :phoenix_markdown, :smart_tags, :all
-
-    config :phoenix_markdown, :smart_tags, only: "smart_sample.html"
-    config :phoenix_markdown, :smart_tags, only: ["**/smart_templates/*.md"]
-    config :phoenix_markdown, :smart_tags, only: ~r/.+%%.+/
-
-    config :phoenix_markdown, :smart_tags, :all
-
   ```
+
+  The options turn on smart tags are `:all`, `:only` and `:except`. Anything else (or not setting it at all)
+  leaves the tags excaped in Markdown.
+
+* `:all` evaluates all smart tags in all markdown files.
+* `:only` Only files that match the pattern or patterns will be evaluated. This pattern can be any of:
+  * The name of the final html file ex: `"sample.html"`
+  * The full path of the template file ex: `"lib/sample_web/templates/page/sample.html.md"`
+  * a path with wildcards ex: `"**/page/**"`. This is nice as it would evaluate all files in a single directory.
+  * a regex agains the path. ex: `~r/.+%%.+/`. This allows you to use a character sequence in the name as a per-file (or path) flag saying if it should be evaluated.
+* `:except` Only files that do NOT match the pattern or patterns will be evaluated. This pattern can be any of:
+  * The name of the final html file ex: `"sample.html"`
+  * The full path of the template file ex: `"lib/sample_web/templates/page/sample.html.md"`
+  * a path with wildcards ex: `"**/page/**"`. This is nice as it would prevent evaluation of all files in a single directory.
+  * a regex agains the path. ex: `~r/.+%%.+/`. This allows you to use a character sequence in the name as a per-file (or path) flag saying if it not should be evaluated.
 
 
   ## Generators
 
   There are no generators for phoenix_markdown since they wouldn't make sense. You can embed server-side
   tags if you turn them on in the configuration, but otherwise just keep it static and refer to it from
-  a *.eex templete.
+  a *.eex template.
 
   Like this:
   ```elixir
