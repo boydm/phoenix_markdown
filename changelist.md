@@ -1,5 +1,9 @@
 ## policy_wonk Changelist
 
+### 1.0.0-rc
+# Add optional eex pre-compile step to intepret smart-tags in a markdown document
+# improve tests and docs
+
 ### 0.1.5
 # update to use earmark 1.2
 # relax requirement on phoenix
