@@ -1,9 +1,14 @@
 defmodule PhoenixMarkdown do
 
   @moduledoc """
+
+  A Markdown template engine for Phoenix. It uses [Earmark](https://hex.pm/packages/earmark) to render
+  markdown to html. It also lets you (optionally) embed EEx tags to be evaulated on the server.
+
+
   ## Usage
 
-    1. Add `{:phoenix_markdown, "~> 0.1"}` to your deps in `mix.exs`.
+    1. Add `{:phoenix_markdown, "~> 1.0"}` to your deps in `mix.exs`.
     2. Add the following to your Phoenix `config/config.exs`
 
        ```elixir
@@ -51,10 +56,30 @@ defmodule PhoenixMarkdown do
       ]
   ```
 
-  ## Generators / Use
+  ## Earmark Configuration
 
-  There are no generators for phoenix_markdown since they wouldn't make sense. If you want to include
-  markdown in a page with dynamic contact, use render and target the markdown template.
+  You can configure phoenix_markdown vie two seperate configuration blocks.
+
+  The first one is,
+  literally, the options that will be passed in to Earmark as it renders the markdown into html.
+
+    ```elixir
+    config :phoenix_markdown, :earmark, %Earmark.Options{
+      gfm: true,
+      breaks: true
+    }
+  ```
+
+  ## Smart Tags Configuration
+
+  The second configuration block is where you indicate if you want
+  
+
+  ## Generators
+
+  There are no generators for phoenix_markdown since they wouldn't make sense. You can embed server-side
+  tags if you turn them on in the configuration, but otherwise just keep it static and refer to it from
+  a *.eex templete.
 
   Like this:
   ```elixir
