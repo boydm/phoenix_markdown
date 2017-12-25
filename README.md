@@ -53,7 +53,7 @@ then the pattern should look like this:
 
 ## Optional Earmark Configuration
 
-You can configure phoenix_markdown vie two seperate configuration blocks.
+You can configure phoenix_markdown via two seperate configuration blocks.
 
 The first one is,
 literally, the options that will be passed to Earmark as it renders the markdown into html.
@@ -98,18 +98,27 @@ leaves the tags excaped in Markdown.
 * `:all` evaluates all server tags in all markdown files.
 * `:only` Only files that match the pattern or patterns will be evaluated. 
   This pattern can be any of:
-    * The name of the final html file ex: `"sample.html"`
-    * The full path of the template file ex: `"lib/sample_web/templates/page/sample.html.md"`
-    * a path with wildcards ex: `"**/page/**"`. This is nice as it would evaluate all files in a single directory.
-    * a regex against the path. ex: `~r/.+%%.+/`. This allows you to use a character sequence in the name as a per-file (or path) flag saying if it should be evaluated.
+    * The name of the final html file: `"sample.html"`
+    * The full path of the template file: `"lib/sample_web/templates/page/sample.html.md"`
+    * A path with wildcards: `"**/page/**"`. This is nice as it would evaluate all files in a single directory.
+    * A regex against the path: `~r/.+%%.+/`. This allows you to use a character sequence in the name as a per-file (or path) flag saying if it should be evaluated.
 * `:except` Only files that do NOT match the pattern or patterns will be evaluated.
   This pattern can be any of:
-    * The name of the final html file ex: `"sample.html"`
-    * The full path of the template file ex: `"lib/sample_web/templates/page/sample.html.md"`
-    * a path with wildcards ex: `"**/page/**"`. This is nice as it would prevent evaluation of all files in a single directory.
-    * a regex against the path. ex: `~r/.+%%.+/`. This allows you to use a character sequence in the name as a per-file (or path) flag saying if it not should be evaluated.
+    * The name of the final html file: `"sample.html"`
+    * The full path of the template file: `"lib/sample_web/templates/page/sample.html.md"`
+    * A path with wildcards: `"**/page/**"`. This is nice as it would prevent evaluation of all files in a single directory.
+    * A regex against the path: `~r/.+%%.+/`. This allows you to use a character sequence in the name as a per-file (or path) flag saying if it not should be evaluated.
 
 Both the `:only` and `:except` options accept either a single pattern, or a list of patterns.
+
+  ```elixir
+    config :phoenix_markdown, :server_tags, only: ~r/.+%%.+/
+  ```
+  or...
+  
+  ```elixir
+    config :phoenix_markdown, :server_tags, only: [~r/.+%%.+/, "some_file.html"]
+  ```
 
 ## Generators
 
