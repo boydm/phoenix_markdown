@@ -1,5 +1,9 @@
 # Markdown Template Engine for Phoenix
 
+
+[![Hex.pm](https://img.shields.io/hexpm/v/phoenix_markdown.svg)](https://hex.pm/packages/phoenix_markdown)
+
+
 A Markdown template engine for Phoenix. It also lets you (optionally) embed EEx tags to be evaulated on the server.
 
 > Powered by [Earmark](https://github.com/pragdave/earmark)
@@ -115,7 +119,7 @@ Both the `:only` and `:except` options accept either a single pattern, or a list
     config :phoenix_markdown, :server_tags, only: ~r/.+%%.+/
   ```
   or...
-  
+
   ```elixir
     config :phoenix_markdown, :server_tags, only: [~r/.+%%.+/, "some_file.html"]
   ```
