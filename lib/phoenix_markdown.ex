@@ -2,9 +2,9 @@ defmodule PhoenixMarkdown do
 
   @moduledoc """
 
-  A Markdown template engine for Phoenix. It uses [Earmark](https://hex.pm/packages/earmark) to render
-  markdown to html. It also lets you (optionally) embed EEx tags to be evaulated on the server.
+  A Markdown template engine for Phoenix. It also lets you (optionally) embed EEx tags to be evaulated on the server.
 
+  > Powered by [Earmark](https://github.com/pragdave/earmark)
 
   ## Usage
 
@@ -120,7 +120,7 @@ defmodule PhoenixMarkdown do
     config :phoenix_markdown, :server_tags, only: ~r/.+%%.+/
   ```
   or...
-  
+
   ```elixir
     config :phoenix_markdown, :server_tags, only: [~r/.+%%.+/, "some_file.html"]
   ```
