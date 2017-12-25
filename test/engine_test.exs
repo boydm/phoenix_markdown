@@ -46,6 +46,7 @@ defmodule PhoenixMarkdown.EngineTest do
   end
 
   test "compile a smart template with smart tags turned off with a nil" do
+    Mix.Config.persist(phoenix_markdown: [earmark: nil])
     Mix.Config.persist(phoenix_markdown: [server_tags: nil])
     data = "test/fixtures/templates/view_test/my_app/page/smart_sample.html.md"
     |> Engine.compile("smart_sample.html")
