@@ -6,6 +6,9 @@
 [![Hex.pm](https://img.shields.io/hexpm/dt/phoenix_markdown.svg)](https://hex.pm/packages/phoenix_markdown)
 
 
+Note: I am in the process of building version 1.0...
+
+
 A Markdown template engine for Phoenix. It also lets you (optionally) embed EEx tags to be evaulated on the server.
 
 > Powered by [Earmark](https://github.com/pragdave/earmark)
