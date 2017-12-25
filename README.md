@@ -2,6 +2,8 @@
 
 
 [![Hex.pm](https://img.shields.io/hexpm/v/phoenix_markdown.svg)](https://hex.pm/packages/phoenix_markdown)
+[![Hex.pm](https://img.shields.io/hexpm/dw/phoenix_markdown.svg)](https://hex.pm/packages/phoenix_markdown)
+[![Hex.pm](https://img.shields.io/hexpm/dt/phoenix_markdown.svg)](https://hex.pm/packages/phoenix_markdown)
 
 
 A Markdown template engine for Phoenix. It also lets you (optionally) embed EEx tags to be evaulated on the server.
