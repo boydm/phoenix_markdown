@@ -100,7 +100,7 @@ To turn on server-side eex tags, set the `:server_tags` configuration option.
   config :phoenix_markdown, :server_tags, :all
 ```
 
-The options turn on server tags are `:all`, `:only` and `:except`. Anything else (or not setting it at all)
+The options to turn on server tags are `:all`, `:only` and `:except`. Anything else (or not setting it at all)
 leaves the tags excaped in Markdown.
 
 * `:all` evaluates all server tags in all markdown files.
