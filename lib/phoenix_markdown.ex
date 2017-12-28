@@ -98,7 +98,7 @@ defmodule PhoenixMarkdown do
   ```
 
   The options to turn on server tags are `:all`, `:only` and `:except`. Anything else (or not setting it at all)
-  leaves the tags excaped in Markdown.
+  leaves the tags escaped in Markdown.
 
   * `:all` evaluates all server tags in all markdown files.
   * `:only` Only files that match the pattern or patterns will be evaluated. 
