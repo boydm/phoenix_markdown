@@ -2,6 +2,7 @@
 
 ### 1.0.0
 # Docs improvements
+# run code through the elixir 1.6 formatter
 
 ### 1.0.0-rc1
 # Add optional eex pre-compile step to intepret smart-tags in a markdown document
