@@ -14,21 +14,35 @@ defmodule PhoenixMarkdown.ViewTest do
     use Phoenix.HTML
   end
 
-  #--------------------------------------------------------
+  # --------------------------------------------------------
   test "render a markdown template with smart tags off" do
     html = View.render(MyApp.PageView, "sample.html", [])
-    assert html == {:safe, ["" | "<h2>Sample <em>template</em> <strong>in</strong> Markdown</h2>\n<p>This\nbreaks</p>\n"]}
+
+    assert html ==
+             {:safe,
+              [
+                ""
+                | "<h2>Sample <em>template</em> <strong>in</strong> Markdown</h2>\n<p>This\nbreaks</p>\n"
+              ]}
   end
 
   test "render a smart markdown template with smart tags off" do
     html = View.render(MyApp.PageView, "smart_sample.html", [])
-    assert html == {:safe, ["" | "<h2>Smart</h2>\n<p>&lt;% 11 + 1 %&gt;\n&lt;%= 11 + 2 %&gt;\n&lt;%% 11 + 3 %&gt;\n&lt;%# 11 + 4 %&gt;\nfin</p>\n"]}
+
+    assert html ==
+             {:safe,
+              [
+                ""
+                | "<h2>Smart</h2>\n<p>&lt;% 11 + 1 %&gt;\n&lt;%= 11 + 2 %&gt;\n&lt;%% 11 + 3 %&gt;\n&lt;%# 11 + 4 %&gt;\nfin</p>\n"
+              ]}
   end
 
-  #--------------------------------------------------------
+  # --------------------------------------------------------
   test "render a markdown template with smart tags on" do
     html = View.render(MyApp.SmartView, "sample.html", [])
-    assert html == {:safe, ["" | "<h2>Sample <em>template</em> <strong>in</strong> Markdown</h2>\n"]}
+
+    assert html ==
+             {:safe, ["" | "<h2>Sample <em>template</em> <strong>in</strong> Markdown</h2>\n"]}
   end
 
   test "render a smart markdown template with smart tags on" do
@@ -40,5 +54,4 @@ defmodule PhoenixMarkdown.ViewTest do
     html = View.render(MyApp.SmartView, "regular.html", [])
     assert html == {:safe, [[["" | "<h2>Regular</h2>\n"] | "13"] | "fin"]}
   end
-
 end
