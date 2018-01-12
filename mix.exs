@@ -34,9 +34,12 @@ defmodule PhoenixMarkdown.Mixfile do
   defp deps do
     [
       {:phoenix, ">= 1.1.0"},
-      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:phoenix_html, ">= 2.3.0"},
       {:earmark, "~> 1.2"},         # Markdown interpreter
+
+      # Docs dependencies
+      {:ex_doc, ">= 0.0.0", only: [:dev, :docs]},
+      {:inch_ex, ">= 0.0.0", only: :docs}
     ]
   end
 
