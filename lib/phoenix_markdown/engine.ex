@@ -1,4 +1,8 @@
 defmodule PhoenixMarkdown.Engine do
+  @moduledoc """
+  a single public function (compile) that Phoenix uses to compile incoming templates. You should not need to call it yourself. 
+  """
+
   @behaviour Phoenix.Template.Engine
 
   # --------------------------------------------------------
