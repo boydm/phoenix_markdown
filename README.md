@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/boydm/phoenix_markdown.svg?branch=master)](https://travis-ci.org/boydm/phoenix_markdown)
 [![Hex.pm](https://img.shields.io/hexpm/v/phoenix_markdown.svg)](https://hex.pm/packages/phoenix_markdown)
+[![Inline docs](http://inch-ci.org/github/boydm/phoenix_markdown.svg?branch=master)](http://inch-ci.org/github/boydm/phoenix_markdown)
 [![Hex.pm](https://img.shields.io/hexpm/dw/phoenix_markdown.svg)](https://hex.pm/packages/phoenix_markdown)
 [![Hex.pm](https://img.shields.io/hexpm/dt/phoenix_markdown.svg)](https://hex.pm/packages/phoenix_markdown)
 
