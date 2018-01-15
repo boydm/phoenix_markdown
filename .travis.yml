@@ -10,6 +10,10 @@ before_script:
   - mix local.hex --force
   - mix deps.get --only test
 
+script:
+  - mix test
+  - mix credo
+
 after_script:
   - MIX_ENV=docs mix deps.get
   - MIX_ENV=docs mix inch.report

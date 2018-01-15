@@ -8,9 +8,18 @@ defmodule PhoenixMarkdown.Engine do
   # --------------------------------------------------------
   @doc """
   Precompiles the String file_path into a function defintion, using the EEx and Earmark engines
+
+  The compile function is typically called for by Phoenix's html engine and isn't something
+  you need to call your self.
+
+  ### Parameters
+    * `path` path to the file being compiled
+    * `name` name of the file as requested by the caller
+    
   """
   def compile(path, name) do
-    File.read!(path)
+    path
+    |> File.read!()
     |> Earmark.as_html!(Application.get_env(:phoenix_markdown, :earmark) || %Earmark.Options{})
     |> handle_smart_tags(path, name)
     |> EEx.compile_string(engine: Phoenix.HTML.Engine, file: path, line: 1)
@@ -42,11 +51,9 @@ defmodule PhoenixMarkdown.Engine do
 
   # --------------------------------------------------------
   defp only?(opt, path, name) when is_bitstring(opt) do
-    cond do
-      opt == name ->
-        true
-
-      true ->
+    case opt == name do
+      true -> true
+      false ->
         paths = Path.wildcard(opt)
         Enum.member?(paths, path)
     end
@@ -68,11 +75,9 @@ defmodule PhoenixMarkdown.Engine do
 
   # --------------------------------------------------------
   defp except?(opt, path, name) when is_bitstring(opt) do
-    cond do
-      opt == name ->
-        false
-
-      true ->
+    case opt == name do
+      true -> false
+      false ->
         paths = Path.wildcard(opt)
         !Enum.member?(paths, path)
     end
