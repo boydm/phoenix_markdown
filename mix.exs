@@ -3,7 +3,7 @@ defmodule PhoenixMarkdown.Mixfile do
 
   @version "1.0.0"
   @github "https://github.com/boydm/phoenix_markdown"
-#  @tutorial "https://medium.com/@boydm/policy-wonk-the-tutorial-6d2b6e435c46#.dz7utkmgb"
+#  @blog_post "put link to blog post here"
 
   def project do
     [
@@ -15,7 +15,10 @@ defmodule PhoenixMarkdown.Mixfile do
         contributors: ["Boyd Multerer"],
         maintainers: ["Boyd Multerer"],
         licenses: ["MIT"],
-        links: %{github: @github}
+        links: %{
+          github: @github,
+#          "Blog Post" => @blog_post
+        }
       ],
 
       name: "phoenix_markdown",
