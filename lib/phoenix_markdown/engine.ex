@@ -7,14 +7,16 @@ defmodule PhoenixMarkdown.Engine do
 
   # --------------------------------------------------------
   @doc """
+  Callback implementation for `Phoenix.Template.Engine.compile/2`
+
   Precompiles the String file_path into a function defintion, using the EEx and Earmark engines
 
   The compile function is typically called for by Phoenix's html engine and isn't something
   you need to call your self.
 
   ### Parameters
-    * `path` path to the file being compiled
-    * `name` name of the file as requested by the caller
+    * `path` path to the template being compiled
+    * `name` name of the template being compiled
     
   """
   def compile(path, name) do
