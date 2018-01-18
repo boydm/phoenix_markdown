@@ -7,7 +7,9 @@
 [![Hex.pm](https://img.shields.io/hexpm/dt/phoenix_markdown.svg)](https://hex.pm/packages/phoenix_markdown)
 
 
-A Markdown template engine for Phoenix. It also lets you (optionally) embed EEx tags to be evaulated on the server.
+A Markdown template engine for [Phoenix](http://amzn.to/2DhFCTB). It also lets you (optionally) embed EEx tags to be evaulated on the server.
+
+[Read the blog post.](https://medium.com/@boydm/markdown-templates-in-phoenix-25721a3bc682)
 
 > Powered by [Earmark](https://github.com/pragdave/earmark)
 
