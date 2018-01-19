@@ -65,6 +65,25 @@ defmodule PhoenixMarkdown.EngineTest do
               ]}
   end
 
+  test "compile a vanilla markdown template with earmark options as a map" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %{gfm: true, breaks: true}])
+    Mix.Config.persist(phoenix_markdown: [server_tags: false])
+
+    data =
+      "test/fixtures/templates/view_test/my_app/page/sample.html.md"
+      |> Engine.compile("sample.html")
+
+    assert data ==
+             {:safe,
+              [
+                {:|, [],
+                 [
+                   "",
+                   "<h2>Sample <em>template</em> <strong>in</strong> Markdown</h2>\n<p>This<br/>breaks</p>\n"
+                 ]}
+              ]}
+  end
+
   # ============================================================================
   # basic smart tags
 

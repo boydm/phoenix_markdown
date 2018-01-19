@@ -20,9 +20,19 @@ defmodule PhoenixMarkdown.Engine do
     
   """
   def compile(path, name) do
+    # get the earmark options from config and cast into the right struct
+    earmark_options = case Application.get_env(:phoenix_markdown, :earmark) do
+      %Earmark.Options{} = opts ->
+        opts
+      %{} = opts ->
+        Kernel.struct!(Earmark.Options, opts)
+      _ ->
+        %Earmark.Options{}
+    end
+
     path
     |> File.read!()
-    |> Earmark.as_html!(Application.get_env(:phoenix_markdown, :earmark) || %Earmark.Options{})
+    |> Earmark.as_html!(earmark_options)
     |> handle_smart_tags(path, name)
     |> EEx.compile_string(engine: Phoenix.HTML.Engine, file: path, line: 1)
   end

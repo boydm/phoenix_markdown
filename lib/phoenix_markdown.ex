@@ -63,7 +63,7 @@ defmodule PhoenixMarkdown do
   literally, the options that will be passed to Earmark as it renders the markdown into html.
 
   ```elixir
-    config :phoenix_markdown, :earmark, %Earmark.Options{
+    config :phoenix_markdown, :earmark, %{
       gfm: true,
       breaks: true
     }
