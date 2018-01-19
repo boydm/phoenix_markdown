@@ -1,5 +1,8 @@
 ## phoenix_markdown Changelist
 
+### 1.0.1
+# Earmark configuration now accepts a simple map. Better for config files.
+
 ### 1.0.0
 # Docs improvements
 # run code through the elixir 1.6 formatter

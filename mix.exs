@@ -1,7 +1,7 @@
 defmodule PhoenixMarkdown.Mixfile do
   use Mix.Project
 
-  @version "1.0.0"
+  @version "1.0.1"
   @github "https://github.com/boydm/phoenix_markdown"
   @blog_post "https://medium.com/@boydm/markdown-templates-in-phoenix-25721a3bc682"
 
