@@ -1,5 +1,8 @@
 ## phoenix_markdown Changelist
 
+### 1.0.2
+# Decode HTML escape sequences inside server tags.
+
 ### 1.0.1
 # Earmark configuration now accepts a simple map. Better for config files.
 
