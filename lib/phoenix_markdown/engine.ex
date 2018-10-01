@@ -55,7 +55,10 @@ defmodule PhoenixMarkdown.Engine do
   # --------------------------------------------------------
   defp do_restore_smart_tags(markdown, true) do
     smart_tag = ~r/&lt;%.*?%&gt;/
-    Regex.replace(smart_tag, markdown, &HtmlEntities.decode/1)
+    markdown = Regex.replace(smart_tag, markdown, &HtmlEntities.decode/1)
+
+    uri_smart_tag = ~r/%3C%25+.*?%25%3E/
+    Regex.replace(uri_smart_tag, markdown, &URI.decode/1)
   end
 
   defp do_restore_smart_tags(markdown, _), do: markdown

@@ -365,6 +365,51 @@ defmodule PhoenixMarkdown.EngineTest do
 
   end
 
+  test "compile a smart template with smart tags turned on with :all and percent-encoded tags" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{}])
+    Mix.Config.persist(phoenix_markdown: [server_tags: :all])
+
+    data =
+      "test/fixtures/templates/view_test/my_app/page/smart_sample_links.html.md"
+      |> Engine.compile("smart_sample_links.html")
+
+    assert data ==
+             {:safe,
+              [
+                {:|, [],
+                 [
+                   {:__block__, [],
+                    [
+                      {:=, [],
+                       [
+                         {:tmp1, [], Phoenix.HTML.Engine},
+                         [
+                           {:|, [],
+                            [
+                              {:__block__, [],
+                               [
+                                 {:=, [],
+                                  [
+                                    {:tmp2, [], Phoenix.HTML.Engine},
+                                    [
+                                      {:|, [],
+                                       ["", "<h2>Smart Enough For Links</h2>\n<p><a href=\""]}
+                                    ]
+                                  ]},
+                                 "foo",
+                                 {:tmp2, [], Phoenix.HTML.Engine}
+                               ]},
+                              "\">foo</a>\n<a href=\""
+                            ]}
+                         ]
+                       ]},
+                      [{:|, [], [{:tmp1, [], Phoenix.HTML.Engine}, "bar"]}]
+                    ]},
+                   "\">bar</a>\n<a href=\"<% \"baz\" %>\">baz</a>\n<a href=\"\">foobar</a>\nfin</p>\n"
+                 ]}
+              ]}
+  end
+
   # ============================================================================
   # smart tags via :only tag
 
