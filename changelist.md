@@ -1,8 +1,10 @@
 ## phoenix_markdown Changelist
 
+### 1.0.3
+# Percent-decode server tags in URI's (thank you WalkerMills)
+
 ### 1.0.2
 # Decode HTML escape sequences inside server tags. (thank you WalkerMills)
-# Percent-decode server tags in URI's (thank you WalkerMills)
 
 ### 1.0.1
 # Earmark configuration now accepts a simple map. Better for config files.
