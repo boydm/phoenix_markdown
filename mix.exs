@@ -1,7 +1,7 @@
 defmodule PhoenixMarkdown.Mixfile do
   use Mix.Project
 
-  @version "1.0.1"
+  @version "1.0.2"
   @github "https://github.com/boydm/phoenix_markdown"
   @blog_post "https://medium.com/@boydm/markdown-templates-in-phoenix-25721a3bc682"
 
@@ -39,6 +39,7 @@ defmodule PhoenixMarkdown.Mixfile do
       {:phoenix, ">= 1.1.0"},
       {:phoenix_html, ">= 2.3.0"},
       {:earmark, "~> 1.2"},         # Markdown interpreter
+      {:html_entities, "~> 0.4"},
 
       # Docs dependencies
       {:ex_doc, ">= 0.0.0", only: [:dev, :docs]},

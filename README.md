@@ -129,6 +129,20 @@ Both the `:only` and `:except` options accept either a single pattern, or a list
     config :phoenix_markdown, :server_tags, only: [~r/.+%%.+/, "some_file.html"]
   ```
 
+### Unexpected Token in Server Tags
+
+By default Earmark replaces some characters with prettier UTF-8 versions. For
+example, single and double quotes are replaced with left- and right-handed
+versions.  This may break any server tag which contains a prettified character
+since EEx cannot interpret them as intended. To fix this, disable smartypants
+processing.
+
+```elixir
+  config :phoenix_markdown, :earmark, %{
+    smartypants: false
+  }
+```
+
 ## Generators
 
 There are no generators for phoenix_markdown since they wouldn't make sense. You can embed server-side
