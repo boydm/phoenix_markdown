@@ -260,8 +260,7 @@ defmodule PhoenixMarkdown.EngineTest do
                                                         [
                                                           {:tmp2, [], Phoenix.HTML.Engine},
                                                           [
-                                                            {:|, [],
-                                                             ["", "<h2>Smart</h2>\n<p>"]}
+                                                            {:|, [], ["", "<h2>Smart</h2>\n<p>"]}
                                                           ]
                                                         ]},
                                                        {:+, [line: 2], [11, 1]},
@@ -283,8 +282,9 @@ defmodule PhoenixMarkdown.EngineTest do
                                                         {:->, [generated: true],
                                                          [
                                                            [
-                                                             safe: {:data, [generated: true],
-                                                              Phoenix.HTML.Engine}
+                                                             safe:
+                                                               {:data, [generated: true],
+                                                                Phoenix.HTML.Engine}
                                                            ],
                                                            {:data, [generated: true],
                                                             Phoenix.HTML.Engine}
@@ -362,7 +362,6 @@ defmodule PhoenixMarkdown.EngineTest do
                    "\n<% \"baz\" %>\n\nfin</p>\n"
                  ]}
               ]}
-
   end
 
   test "compile a smart template with smart tags turned on with :all and percent-encoded tags" do

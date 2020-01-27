@@ -1,5 +1,8 @@
 ## phoenix_markdown Changelist
 
+### 1.0.4
+# Add .formatter.exs and format the code
+
 ### 1.0.3
 # Percent-decode server tags in URI's (thank you WalkerMills)
 

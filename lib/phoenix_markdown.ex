@@ -140,5 +140,4 @@ defmodule PhoenixMarkdown do
   a file with the `.html.md` extension and drop it into the appropriate templates folder in your
   phoenix application. Then you can use it just like any other template.
   """
-
 end

@@ -21,14 +21,17 @@ defmodule PhoenixMarkdown.Engine do
   """
   def compile(path, name) do
     # get the earmark options from config and cast into the right struct
-    earmark_options = case Application.get_env(:phoenix_markdown, :earmark) do
-      %Earmark.Options{} = opts ->
-        opts
-      %{} = opts ->
-        Kernel.struct!(Earmark.Options, opts)
-      _ ->
-        %Earmark.Options{}
-    end
+    earmark_options =
+      case Application.get_env(:phoenix_markdown, :earmark) do
+        %Earmark.Options{} = opts ->
+          opts
+
+        %{} = opts ->
+          Kernel.struct!(Earmark.Options, opts)
+
+        _ ->
+          %Earmark.Options{}
+      end
 
     path
     |> File.read!()
@@ -66,7 +69,9 @@ defmodule PhoenixMarkdown.Engine do
   # --------------------------------------------------------
   defp only?(opt, path, name) when is_bitstring(opt) do
     case opt == name do
-      true -> true
+      true ->
+        true
+
       false ->
         paths = Path.wildcard(opt)
         Enum.member?(paths, path)
@@ -90,7 +95,9 @@ defmodule PhoenixMarkdown.Engine do
   # --------------------------------------------------------
   defp except?(opt, path, name) when is_bitstring(opt) do
     case opt == name do
-      true -> false
+      true ->
+        false
+
       false ->
         paths = Path.wildcard(opt)
         !Enum.member?(paths, path)
