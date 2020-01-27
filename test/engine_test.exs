@@ -1345,4 +1345,46 @@ defmodule PhoenixMarkdown.EngineTest do
       )
     end
   end
+
+  # ============================================================================
+  # image tag test
+
+  test "compile a markdown document with image tags in it" do
+    Mix.Config.persist(phoenix_markdown: [earmark: %Earmark.Options{gfm: true, breaks: true}])
+
+    Mix.Config.persist(
+      phoenix_markdown: [
+        server_tags:
+          {:only, ["test/fixtures/templates/view_test/my_app/smart/image_tag_sample.html.md"]}
+      ]
+    )
+
+    data =
+      "test/fixtures/templates/view_test/my_app/smart/image_tag_sample.html.md"
+      |> Engine.compile("image_tag_sample.html")
+
+    assert data ==
+             {:safe,
+              [
+                {:|, [],
+                 [
+                   {:__block__, [],
+                    [
+                      {:=, [],
+                       [
+                         {:tmp1, [], Phoenix.HTML.Engine},
+                         [
+                           {:|, [],
+                            [
+                              "",
+                              "<h2>Regular</h2><p><img src=\"/images/static_image.png\" alt=\"Static Image\"/><br/><img src=\""
+                            ]}
+                         ]
+                       ]},
+                      [{:|, [], [{:tmp1, [], Phoenix.HTML.Engine}, "/images/smart_image.png"]}]
+                    ]},
+                   "\" alt=\"Smart Image\"/><br/>fin</p>\n"
+                 ]}
+              ]}
+  end
 end
