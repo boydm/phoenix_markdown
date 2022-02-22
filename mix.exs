@@ -1,7 +1,7 @@
 defmodule PhoenixMarkdown.Mixfile do
   use Mix.Project
 
-  @version "1.0.3"
+  @version "1.0.4"
   @github "https://github.com/boydm/phoenix_markdown"
   @blog_post "https://medium.com/@boydm/markdown-templates-in-phoenix-25721a3bc682"
 
@@ -31,7 +31,7 @@ defmodule PhoenixMarkdown.Mixfile do
   end
 
   def application do
-    [applications: [:phoenix]]
+    [extra_applications: [:phoenix]]
   end
 
   defp deps do
